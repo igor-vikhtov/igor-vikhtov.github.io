@@ -4,18 +4,26 @@
 
     <script type="text/javascript">
       <!--
-      function showAlert() {
-        var retVal = alert("This is alert!");
-      }
+		function showAlert() {
+			var retVal = alert("This is alert!");
+			logResult("ALERT: " + retVal);
+		}
 
-      function showConfirmation() {
-        var retVal = confirm("Do you confirm?");
-      }
+		function showConfirmation() {
+			var retVal = confirm("Do you confirm?");
+			logResult("CONFIRM: " + retVal);
+		}
 
-      function showPrompt() {
-        var retVal = confirm("This is prompt.");
-      }
-
+		function showPrompt() {
+			var retVal = prompt("This is prompt.");
+			logResult("PROMPT: " + retVal);
+		}
+		function logResult(retVal) {
+			var logger = document.getElementById("logger");
+			var entry = document.createElement('li');
+			entry.appendChild(document.createTextNode(retVal));
+			logger.appendChild(entry);
+	}
       //-->
 
     </script>
@@ -25,12 +33,13 @@
   <body>
     <p>Click the following button to see the result: </p>
 
-    <form>
-      <input type="button" value="Show Alert" onclick="showAlert();" />
-      <input type="button" value="Show Confirm" onclick="showConfirmation();" />
-      <input type="button" value="Show Prompt" onclick="showPrompt();" />
-    </form>
-
+	<form>
+	  <input type="button" value="Show Alert" onclick="showAlert();" />
+	  <input type="button" value="Show Confirm" onclick="showConfirmation();" />
+	  <input type="button" value="Show Prompt" onclick="showPrompt();" />
+	</form>
+	 <ol id="logger">
+	</ol> 
   </body>
 
 </html>

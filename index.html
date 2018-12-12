@@ -42,6 +42,7 @@
 			var wnd = window.open(document.URL, '_blank');
 			wnd.onload = function() {
 				wnd.document.body.style.backgroundColor = getRandomColor();
+				wnd.document.body.style.backgroundColor = getRandomColor();
 			}
 		}
 		
@@ -52,6 +53,7 @@
 			var t = 300;
 			var wnd = window.open(document.URL, '_blank', 'height='+h+',width='+w+',left='+l+',top'+t);
 			wnd.onload = function() {
+				wnd.document.body.style.backgroundColor = getRandomColor();
 				wnd.document.body.style.backgroundColor = getRandomColor();
 			}
 		}

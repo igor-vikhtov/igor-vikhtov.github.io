@@ -18,23 +18,11 @@
 			var retVal = prompt("This is prompt.");
 			logResult("PROMPT: " + retVal);
 		}
-		
-		async function showAsyncPrompt() {
-			logResult("Start async prompt");
-			logResult("Wait 2 sec...");
-			
-			let promise = new Promise((resolve, reject) => {
-				setTimeout(() => resolve("Finish async prompt"), 2000);
-				//var retVal = prompt("This async is prompt.");
-			});
-			let result = await promise;
-			logResult(result);
-		}
-		
-		function logResult(retVal) {
+
+		function logResult(text) {
 			var logger = document.getElementById("logger");
 			var entry = document.createElement('li');
-			entry.appendChild(document.createTextNode(retVal));
+			entry.appendChild(document.createTextNode(text));
 			logger.appendChild(entry);
 		}
 

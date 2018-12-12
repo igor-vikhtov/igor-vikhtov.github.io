@@ -4,7 +4,7 @@
 
     <script type="text/javascript">
       <!--
-		function showAlert() {
+		async function showAlert() {
 			var retVal = alert("This is alert!");
 			logResult("ALERT: " + retVal);
 		}
@@ -18,12 +18,38 @@
 			var retVal = prompt("This is prompt.");
 			logResult("PROMPT: " + retVal);
 		}
+		
+		async function showAsyncPrompt() {
+			logResult("Start async prompt");
+			logResult("Wait 2 sec...");
+			
+			let promise = new Promise((resolve, reject) => {
+				setTimeout(() => resolve("Finish async prompt"), 2000);
+				//var retVal = prompt("This async is prompt.");
+			});
+			let result = await promise;
+			logResult(result);
+		}
+		
 		function logResult(retVal) {
 			var logger = document.getElementById("logger");
 			var entry = document.createElement('li');
 			entry.appendChild(document.createTextNode(retVal));
 			logger.appendChild(entry);
-	}
+		}
+
+		function showNewTab() {
+			window.open(document.URL, '_blank');
+		}
+		
+		function showNewWindow() {
+			var w = 1000;
+			var h = 500;
+			var l = 200;
+			var t = 300;
+			window.open(document.URL, '_blank', 'height='+h+',width='+w+',left='+l+',top'+t);
+		}
+		
       //-->
 
     </script>
@@ -37,6 +63,8 @@
 	  <input type="button" value="Show Alert" onclick="showAlert();" />
 	  <input type="button" value="Show Confirm" onclick="showConfirmation();" />
 	  <input type="button" value="Show Prompt" onclick="showPrompt();" />
+	  <input type="button" value="New Tab" onclick="showNewTab();" />
+	  <input type="button" value="New Window" onclick="showNewWindow();" />
 	</form>
 	 <ol id="logger">
 	</ol> 

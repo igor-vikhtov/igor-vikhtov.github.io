@@ -39,7 +39,10 @@
 		}
 
 		function showNewTab() {
-			window.open(document.URL, '_blank');
+			var wnd = window.open(document.URL, '_blank');
+			wnd.onload = function() {
+				wnd.document.body.style.backgroundColor = getRandomColor();
+			}
 		}
 		
 		function showNewWindow() {
@@ -47,9 +50,20 @@
 			var h = 500;
 			var l = 200;
 			var t = 300;
-			window.open(document.URL, '_blank', 'height='+h+',width='+w+',left='+l+',top'+t);
+			var wnd = window.open(document.URL, '_blank', 'height='+h+',width='+w+',left='+l+',top'+t);
+			wnd.onload = function() {
+				wnd.document.body.style.backgroundColor = getRandomColor();
+			}
 		}
 		
+		function getRandomColor() {
+			var letters = '0123456789ABCDEF';
+			var color = '#';
+			for (var i = 0; i < 6; i++) {
+				color += letters[Math.floor(Math.random() * 16)];
+			}
+			return color;
+		}
       //-->
 
     </script>
